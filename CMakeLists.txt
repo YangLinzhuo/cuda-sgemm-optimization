@@ -2,14 +2,14 @@ cmake_minimum_required(VERSION 3.22)
 project(sgemm LANGUAGES CXX CUDA)
 
 set(CMAKE_CUDA_STANDARD 20)
-set(CMAKE_CUDA_FLAGS "-O3")
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -O3 -lineinfo")
 #set(CMAKE_CUDA_FLAGS "-g -G")
 
 find_package(CUDAToolkit REQUIRED)
 
 add_executable(${PROJECT_NAME} main.cu
         src/utils.cu
-        src/kernels.cu)
+        src/sgemm/kernels.cu src/sgemm/shared_memory.cu)
 
 # 可执行文件输出路径
 # https://gist.github.com/gavinb/c993f71cf33d2354515c4452a3f8ef30

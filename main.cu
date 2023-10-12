@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "src/utils.cuh"
-#include "src/kernels.cuh"
+#include "src/sgemm/kernels.cuh"
 
 int main(int argc, const char* argv[]) {
     if (argc == 1) {
