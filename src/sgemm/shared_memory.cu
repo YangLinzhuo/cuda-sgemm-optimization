@@ -2,7 +2,7 @@
 // Created by YangLinzhuo on 2023/10/12.
 //
 
-#include "kernels.cuh"
+#include "sgemm.cuh"
 
 template <const int BM, const int BN, const int BK>
 __global__ void sm_kernel(int M, int N, int K, float alpha, float *A, float *B, float beta, float *C) {

@@ -9,7 +9,12 @@ find_package(CUDAToolkit REQUIRED)
 
 add_executable(${PROJECT_NAME} main.cu
         src/utils.cu
-        src/sgemm/kernels.cu src/sgemm/shared_memory.cu)
+        src/sgemm/sgemm.cu
+        src/sgemm/shared_memory.cu
+        src/sgemm/tile.cu
+        src/sgemm/float4.cu
+        src/sgemm/double_buffering.cu
+        src/sgemm/split_tile.cu)
 
 # 可执行文件输出路径
 # https://gist.github.com/gavinb/c993f71cf33d2354515c4452a3f8ef30
