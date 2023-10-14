@@ -7,7 +7,7 @@
 
 #include <ctime>
 #include <cstdio>
-//#include <sys/time.h>
+#include <random>
 #include <cuda_runtime.h>
 
 // https://leimao.github.io/blog/Proper-CUDA-Error-Checking/

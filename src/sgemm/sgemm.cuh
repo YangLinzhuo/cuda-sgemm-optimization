@@ -2,11 +2,15 @@
 // Created by linn on 9/29/23.
 //
 
-#ifndef SGEMM_KERNELS_CUH
-#define SGEMM_KERNELS_CUH
+#ifndef SGEMM_SGEMM_CUH
+#define SGEMM_SGEMM_CUH
 
 #include <cuda_runtime.h>
 #include <cublas_v2.h>
+
+#define OFFSET(row, col, stride) ((row) * (stride) + (col))
+#define CEIL_DIV(M, N) (((M) + (N - 1)) / (N))
+#define FETCH_FLOAT4(pointer) (reinterpret_cast<float4*>(&(pointer))[0])
 
 void test_cublas(cublasHandle_t handle, int M, int N, int K,
                  float alpha, float *A, float *B, float beta, float *C);
@@ -30,4 +34,4 @@ void test_tile_2d_split_kernel(cublasHandle_t handle, int M, int N, int K,
                                float alpha, float *A, float *B, float beta, float *C);
 void test_tile_1d_split_kernel(cublasHandle_t handle, int M, int N, int K,
                                float alpha, float *A, float *B, float beta, float *C);
-#endif //SGEMM_KERNELS_CUH
+#endif //SGEMM_SGEMM_CUH

@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "src/utils.cuh"
-#include "src/sgemm/kernels.cuh"
+#include "src/sgemm/sgemm.cuh"
 
 int main(int argc, const char* argv[]) {
     if (argc == 1) {
@@ -122,7 +122,7 @@ int main(int argc, const char* argv[]) {
         std::exit(EXIT_FAILURE);
     }
 
-    int repeat_times = 5;
+    int repeat_times = 1;
     cudaEventRecord(beg);
     for (int j = 0; j < repeat_times; j++) {
         test_func(handle, m, n, k, alpha, dA, dB, beta, dC);

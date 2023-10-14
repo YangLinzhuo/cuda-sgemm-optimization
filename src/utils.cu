@@ -44,14 +44,11 @@ bool verify_matrix(const float *mat1, const float *mat2, int N) {
 
 
 void randomize_matrix(float *mat, int N) {
-    // NOTICE: 使用gettimeofdays替代srand((unsigned)time(NULL));time精度过低，产生相同随机数
-//    struct timeval time;
-//    gettimeofday(&time, NULL);
-//    srand(time.tv_usec);
+    auto const seed = 1101;
+    std::mt19937 engine {seed};
+    std::uniform_real_distribution<float> generator {-5.f, 5.f};
     for (int i = 0; i < N; i++) {
-        float tmp = (float) (rand() % 5) + 0.01 * (rand() % 5);
-        tmp = (rand() % 2 == 0) ? tmp : tmp * (-1.);
-        mat[i] = tmp;
+        mat[i] = generator(engine);
     }
 }
 
